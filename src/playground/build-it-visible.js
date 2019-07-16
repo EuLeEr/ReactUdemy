@@ -1,20 +1,36 @@
-let Caption = "Show detail";
-const ChangeCaption = ((e) => {
-    if (Caption == "Show detail") {Caption = "Hide detail"}
-    else Caption = "Show detail";
-    UpAndTiger();
-})
-
-const UpAndTiger = () => {
-    const Template = (
+class VisibiliyToggle extends React.Component {
+    constructor(props) {
+        super(props);
+        this.toogleVisibility = this.toogleVisibility.bind(this);
+        this.state = {
+            visibility: false
+        };
+    }
+    toogleVisibility() {
+        this.setState((preState) => {   
+                return {
+                    visibility: !preState.visibility
+                };
+             });
+    }
+    render() {
+    return (
         <div>
         <title>Indecision App</title>
         <h1>Visibility Toogle</h1>
-        <button onClick={ChangeCaption}>{Caption}</button>
+        <button onClick={this.toogleVisibility}>
+        {this.state.visibility ? 'Hide details' : 'Show details'}</button>
+        {this.state.visibility && (
+            <div>
+                <p>Hey ! These are some details </p>
+            </div>
+        )}
         </div>
-        );
-    ReactDOM.render(Template, Approot);  
-    };
+        );  
 
-const Approot = document.getElementById("app");
-UpAndTiger();
+    }
+}
+
+
+    ReactDOM.render(< VisibiliyToggle />, document.getElementById("app"));
+
