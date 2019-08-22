@@ -17,6 +17,7 @@ class IndecisionApp extends React.Component {
     //     options: []
     //   };
     // }); 
+    
   }
   handleDeleteOption(optionToRemove) {
     console.log("delete option ",optionToRemove);
